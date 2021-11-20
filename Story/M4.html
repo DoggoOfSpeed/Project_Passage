@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' href='../css/StoryTheme.css' media='screen'>
+	<style>
+		body {
+			background: linear-gradient(to bottom right, #f3904f, #3b4371) fixed;
+		}
+		.wrong > h1 {
+			text-shadow: 4px 4px #3b4371;
+			margin-top: 33vh;
+		}
+		#TheoCard, #StarragCard, #DuddingCard, .hintbox {
+			animation: hover 10s infinite;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class='togglediv'><button id='toggle'><img src='../resources/play.svg' alt='Play'></button></div>
+		<div style='margin: 1em'>
+			<h1>Project</h1>
+			<h1 class='passage'>Passage</h1>
+		</div>
+	</header>
+	<div class='flexmain'>
+		<div class='textdiv'>
+			<p class='scenario acrylic' id='scenario-text'></p>
+		</div>
+		<div class='replydiv'>
+			<p class='reply acrylic' id='reply-text'></p>
+		</div>
+		<div class='buttondiv'>
+			<button id='ButtonOne' class='button acrylic' onClick='reply1()'></button>
+			<button id='ButtonTwo' class='button acrylic' onClick='reply2()'></button>
+			<button id='ButtonThree' class='button acrylic' onClick='reply3()'></button>
+		</div>
+	</div>
+	<div class='hidden acrylic' id='EndCard'>
+		<h3>Mission 4 Completed</h3>
+		<p id='M4'></p>
+		<a href='../index.html' class='icon-only'><img src='../resources/home.svg' alt='Home'></a>
+		<a href='./M4.html' class='icon-only'><img src='../resources/refresh.svg' alt='Refresh'></a>
+		<a href="./M5.html" class="icon-only"><img src="../resources/forward.svg" alt="Forward"/></a>
+	</div>
+	<div class='hidden acrylic' id='TheoCard'>
+		<h3>The Conspirator is:</h3>
+		<input list="names" id='Theoname' class='acrylic' name='fname'>
+		<input list="surnames" id='Theosurname' class='acrylic' name='fname'>
+		<button onclick='validateTheo()' class='button acrylic'>Submit</button>
+		<a class='homebtn' href='../index.html'><img src='../resources/home.svg' alt='Home'></a>
+		<a class='hintbtn' onClick='theoHint()'><img src='../resources/help.svg' alt='Hint'></a>
+	</div>
+	<div class='hidden acrylic' id='StarragCard'>
+		<h3>The Conspirator is:</h3>
+		<input list="names" id='Starragname' class='acrylic' name='fname'>
+		<input list="surnames" id='Starragsurname' class='acrylic' name='fname'>
+		<button onclick='validateStarrag()' class='button acrylic'>Submit</button>
+		<a class='homebtn' href='../index.html'><img src='../resources/home.svg' alt='Home'></a>
+		<a class='hintbtn' onClick='starragHint()'><img src='../resources/help.svg' alt='Hint'></a>
+	</div>
+	<div class='hidden acrylic' id='DuddingCard'>
+		<h3>The Conspirator is:</h3>
+		<input list="names" id='Duddingname' class='acrylic' name='fname'>
+		<input list="surnames" id='Duddingsurname' class='acrylic' name='fname'>
+		<button onclick='validateDudding()' class='button acrylic'>Submit</button>
+		<a class='homebtn' href='../index.html'><img src='../resources/home.svg' alt='Home'></a>
+		<a class='hintbtn' onClick='duggingHint()'><img src='../resources/help.svg' alt='Hint'></a>
+	</div>
+	<div class='hidden acrylic hintbox'>
+		<p class='hinttext'></p>
+	</div>
+	<div class='wrong hidden'>
+		<h1>Wrong<br>Answer</h1>
+	</div>
+	<datalist id="names">
+		<option value="Henry">
+		<option value="Jonathan">
+		<option value="Rogan">
+		<option value="Brother">
+		<option value="Novac">
+		<option value="Edgar">
+		<option value="Finn">
+		<option value="Nilus">
+	</datalist>
+	<datalist id="surnames">
+		<option value="Theo">
+		<option value="Stone">
+		<option value="Dudding">
+		<option value="Hopkins">
+		<option value="Darwin">
+		<option value="Wiggins">
+		<option value="Hilton">
+		<option value="Starrag">
+	</datalist>
+	<nav class='acrylic'>
+		<button id='ButtonFour' class='button acrylic' style='margin: .5em'  onClick='nextScenarioNew()'>Continue</button>
+	</nav>
+	<script src='../js/universal.js'></script>
+	<script src='../js/zepto.min.js' defer></script>
+	<script src='../js/ScriptsStory.js' defer></script>
+	<script src='Scenarios/M4Scenarios.js' async></script>
+	<script>
+		var flowcharts = localStorage.getObj("Flowcharts");
+		var endings = localStorage.getObj('M4-Endings');
+		var quit = false;
+		var count = 0;
+		var mission = 'M4';
+	
+	//Ending Counter
+	function save () {
+		localStorage.setObj('M4-Endings', endings);
+		$('#M4').html(`Conspiracists found: ${endings.filter(x => x == 1).length}/3`);
+	}
+
+	function validateTheo() {
+		var x = $('#Theoname').val() + ' ' + $('#Theosurname').val();
+		if (x == 'Brother Theo') {
+			$('#EndCard').removeClass('hidden');
+			$('#TheoCard, .hintbox').addClass('hidden');
+			if (endings[0] == 0){
+				endings[0] = 1;
+			}
+			if (localStorage.getObj('sound') == true) {
+				endCard.play();
+			}
+			save();
+		}
+		else if (x == 'Novac Darwin' && flowcharts[3] == 0){
+			flowcharts[3] = 1;
+			localStorage.setObj("Flowcharts", flowcharts);
+			$('.wrong').html('<h1>Wrong answer,<br>but a flowchart<br>has been unlocked</h1>')
+    		$('.wrong').removeClass('hidden');
+			setTimeout(function(){ $('.wrong').addClass('hidden'); $('.wrong').html('<h1>Wrong<br>Answer</h1>')}, 3000);
+		}
+  		else {
+    		$('.wrong').removeClass('hidden');
+			setTimeout(function(){ $('.wrong').addClass('hidden');}, 3000);
+		}
+	}
+
+	function validateStarrag() {
+		var x = $('#Starragname').val() + ' ' + $('#Starragsurname').val();
+		if (x == 'Rogan Starrag') {
+			$('#EndCard').removeClass('hidden');
+			$('#StarragCard, .hintbox').addClass('hidden');
+			if (endings[1] == 0){
+				endings[1] = 1;
+			}
+			if (localStorage.getObj('sound') == true) {
+				endCard.play();
+			}
+			save();
+		}
+		else if (x == 'Novac Darwin' && flowcharts[3] == 0){
+			flowcharts[3] = 1;
+			localStorage.setObj("Flowcharts", flowcharts);
+			$('.wrong').html('<h1>Wrong answer,<br>but a flowchart<br>has been unlocked</h1>')
+    		$('.wrong').removeClass('hidden');
+			setTimeout(function(){ $('.wrong').addClass('hidden'); $('.wrong').html('<h1>Wrong<br>Answer</h1>')}, 3000);
+		}
+		else {
+			$('.wrong').removeClass('hidden');
+			setTimeout(function(){ $('.wrong').addClass('hidden'); }, 3000);
+		}
+	}
+
+	function validateDudding() {
+		var x = $('#Duddingname').val() + ' ' + $('#Duddingsurname').val();
+		if (x == 'Finn Dudding') {
+			$('#EndCard').removeClass('hidden');
+			$('#DuddingCard, .hintbox').addClass('hidden');
+			if (endings[2] == 0){
+				endings[2] = 1;
+			}
+			if (localStorage.getObj('sound') == true) {
+				endCard.play();
+			}
+			save();
+		}
+		else if (x == 'Novac Darwin' && flowcharts[3] == 0){
+			flowcharts[3] = 1;
+			localStorage.setObj("Flowcharts", flowcharts);
+			$('.wrong').html('<h1>Wrong answer,<br>but a flowchart<br>has been unlocked</h1>')
+    		$('.wrong').removeClass('hidden');
+			setTimeout(function(){ $('.wrong').addClass('hidden'); $('.wrong').html('<h1>Wrong<br>Answer</h1>')}, 3000);
+		}
+  		else {
+    		$('.wrong').removeClass('hidden');
+			setTimeout(function(){ $('.wrong').addClass('hidden');}, 3000);
+		}
+	}
+
+	function theoHint() {
+		$('.hintbox').removeClass('hidden');
+		$('.hinttext').html(('This character can be met in the mission ') + ('To Ìgil').bold());
+	}
+
+	function starragHint() {
+		$('.hintbox').removeClass('hidden');
+		$('.hinttext').html(('This character can be met in the mission ') + ('Fight to survive').bold());
+	}
+
+	function duggingHint() {
+		$('.hintbox').removeClass('hidden');
+		$('.hinttext').html(('This character can be met in the mission ') + ('Flower Fest').bold());
+	}
+
+//Next scenario
+	function nextScenarioNew(mult){
+		$('#ButtonOne, #ButtonTwo, #ButtonThree').removeClass('disabled').show();
+		if (quit == true){
+			switch (Object.keys(scenarios[count]).pop()) {
+			case 'ending1':
+				$('#TheoCard').removeClass('hidden');
+				break;
+			case 'ending2':
+				$('#StarragCard').removeClass('hidden');
+				break;
+			case 'ending3':
+				$('#DuddingCard').removeClass('hidden');
+				break;
+			}
+			$('.flexmain').hide();
+		}
+		if (scenarios.length > count + 1) {
+			count++;
+		}
+		$('.replydiv').hide();
+		$('.buttondiv').show();
+		quit = scenarios[count].quit;
+		text();
+		if (localStorage.getObj("sound") == true) {
+    		btnsfx4.play();
+  		}
+	}
+	</script>
+</body>
+</html>

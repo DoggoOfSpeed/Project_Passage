@@ -1,0 +1,367 @@
+@font-face {
+  font-family: Bitmgothic;
+  src: url("Bitmgothic.woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Lexend Regular;
+	src: url('LexendRegular.woff2');
+	font-display: swap;
+}
+
+@font-face {
+  font-family: Pixel;
+  src: url("Pixel.woff2");
+  font-display: swap;
+}
+
+html {
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: MS Sans Serif, Tahoma, Verdana, sans-serif;
+  text-align: center;
+  color: #212529;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+h1 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 2.5em;
+  line-height: 1.2;
+  letter-spacing: -.1rem;
+  color: white;
+  text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000,
+    -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+nav {
+  background: rgb(214, 211, 206);
+  border: 1px outset #fff;
+  padding: .2em;
+  transform: translateY(3em);
+	bottom: 0;
+	width: 100%;
+	height: 3em;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+  position: fixed;
+  animation: slidein .35s forwards;
+}
+
+h3 {
+  color: white;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  font-size: 1.5em;
+  margin: .5em;
+  font-weight: normal;
+}
+
+.project {
+  font-family: Lexend Regular;
+}
+
+.passage {
+  font-family: Bitmgothic;
+}
+
+.scenario, .reply, .score {
+  font-size: 1em;
+  margin: 10px auto;
+  padding: 5px;
+  border: 2px solid;
+  border-color: transparent #424242 #424242 transparent;
+  background: silver;
+  animation: fadein .35s;
+  will-change: opacity, transform;
+}
+
+.score {
+  margin: 0px;
+  display: inline-block;
+  border-color: transparent #545c4f #545c4f transparent;
+  background: #a7d18c;
+}
+
+.navigation {
+  margin: auto 10%;
+  font-size: .8em;
+  height: 2.2em;
+  line-height: 2.8em;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hidden {
+  display: none;
+}
+
+img {
+  image-rendering: crisp-edges;
+}
+
+a > img {
+  transition: .35s;
+}
+
+a:hover > img {
+  transform: scale(.95);
+}
+
+.button {
+  border: 2px outset;
+  border-color: transparent #424242 #424242 transparent;
+  background: silver;
+  width: 50%;
+  font-size: .8em;
+  min-height: 1.5em;
+  padding: .25em 1em;
+  line-height: normal;
+  margin: 10px 5px 5px 5px;
+  transition: .35s;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.button:hover {
+  border: 2px inset white;
+  background: silver;
+  color: #424242;
+  box-shadow: -1px -1px #000;
+  transform: scale(.95);
+}
+
+.button:active {
+  transform: scale(.8);
+}
+
+*, *:focus, *:hover {
+  outline: none;
+}
+
+.disabled {
+  cursor: default;
+  background-color: silver;
+  border-style: outset;
+  color: grey;
+  text-shadow: 1px 1px white;
+  opacity: .4;
+  pointer-events: none;
+}
+
+.card {
+  border: 2px solid;
+  border-color: transparent #424242 #424242 transparent;
+  background: silver;
+}
+
+.card-header {
+  background: linear-gradient(to left, #08216b, #a5cef7);
+  color: #fff;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 5px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.flexmain {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 4em;
+  animation: fadein .35s;
+  will-change: opacity, transform;
+}
+
+.flexmain > div {
+  width: 70%;
+  margin: auto;
+  animation: hover 10s infinite;
+  will-change: transform;
+}
+
+.flexmain > div:nth-child(2) {
+  animation-delay: .3s;
+}
+.flexmain > div:nth-child(3) {
+  animation-delay: .6s;
+}
+
+.xpmessage {
+  font-family: Pixel;
+  color: white;
+  position: absolute;
+  bottom: 3em;
+  width: 100%;
+  animation: comein 1s;
+  will-change: opacity, background-color;
+}
+
+#EndCard, #LevelCard {
+  width: 50%;
+  margin: 0 auto 10px auto;
+  padding: 0;
+  animation: fadein .35s;
+  will-change: opacity, transform;
+}
+
+#EndScore {
+  margin: 1em;
+}
+
+.togglediv {
+  left: 0;
+  top: 0;
+  width: 2em;
+  height: 2em;
+  margin: 10px 0 0 10px;
+  position: fixed;
+}
+
+#toggle {
+  background: none;
+  border: none;
+}
+
+*, :after, :before {
+  box-sizing: inherit;
+}
+
+.alevelcard {
+  margin-bottom: 4em !important;
+}
+
+.glow {
+  animation: glow 2s infinite, slidein .35;
+}
+
+/* ANIMATIONS */
+
+@keyframes slidein {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {
+    transform: translateY(0);
+    box-shadow: 0 0 15px 0px rgba(214, 211, 206, .3);
+  }
+  to {
+    transform: translateY(0);
+    box-shadow: 0 0 40px 40px rgba(214, 211, 206, 0);
+  }
+}
+
+@keyframes fadein {
+  from {
+    transform: scale(.8);
+    opacity: 0;
+  }
+}
+
+@keyframes hover {
+  20%, 80% {
+    transform: translate3d(0, -.15em, 0);
+  }
+  50% {
+    transform: translate3d(0, .15em, 0);
+  }
+}
+
+@keyframes comein {
+  0% {
+    opacity: 0;
+  }
+  10%, 25% {
+    color: red;
+    opacity: 1;
+  }
+  15%, 30% {
+    color: blue;
+  }
+  20%, 35% {
+    color: #00ff00;
+  }
+  40%, 90% {
+    color: white;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 80em) {
+  body {
+    font-size: 24px;
+  }
+
+  .scenario, .reply {
+    margin: 5px auto;
+  }
+
+  img {
+    transform: scale(1.5);
+  }
+
+  a:hover > img {
+    transform: scale(1.4);
+  }
+
+  .flexmain {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .flexmain > div {
+    padding-top: 2em;
+    width: 25%;
+    min-height: 15em;
+    margin: 0 3%;
+  }
+
+  .flexmain > div > .button {
+    width: 100%;
+  }
+
+  @keyframes hover {
+    20%, 80% {
+      transform: translate3d(0, -.3em, 0);
+    }
+    50% {
+      transform: translate3d(0, .3em, 0);
+    }
+  }
+}
+
+@media (min-width: 120em) {
+  body {
+    font-size: 28px;
+  }
+
+  img {
+    transform: scale(2);
+  }
+}
