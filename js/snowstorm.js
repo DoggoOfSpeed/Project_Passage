@@ -29,3 +29,4 @@ Math.max(20,a.animationInterval);a.timerInit()};this.start=function(c){if(B){if(
 !r&&!a.flakeBottom;if(g.getComputedStyle)try{w="relative"===g.getComputedStyle(a.targetElement,null).getPropertyValue("position")}catch(d){w=!1}t=a.usePositionFixed;h&&(l&&!a.disabled)&&(a.init(),a.active=!0)};a.autoStart&&a.events.add(g,"load",y,!1);return this}(window,document);
 snowStorm.followMouse = false;
 snowStorm.snowStick = false;
+snowStorm.excludeMobile = false;
