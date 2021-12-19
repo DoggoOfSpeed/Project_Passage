@@ -16,13 +16,13 @@ if (isMobileDevice) {
   mobile = 1;
 }
 
-if(window.localStorage==undefined){
+if(window.localStorage == undefined){
   alert('Your browser doesn\'t support saving progress. \nTry again in a different browser.');
 }
 
 $(window).on("load", function () {
   $(".lds-ellipsis").css("animation", "fadeout .35s forwards");
-  setTimeout(function () {$(".lds-ellipsis").css("display", "none")}, 350);
+  setTimeout(function () {$(".lds-ellipsis").css("display", "none");}, 350);
   arcadeLevel();
   survivalLevel();
   switch (localStorage.getObj("sound")) {
@@ -198,24 +198,24 @@ function flowchart(x, y, s) {
   z = s;
   $("body").addClass("noscroll");
   if(flowcharts[x-1] == 1) {
-    $("#flowchartcard, #close").removeClass("hidden");
+    $("#flowchartcard, .close").removeClass("hidden");
     if (x == 1) {
-      $("#flowchartflex").html('<iframe src="Story/Scenarios/M1Flow.svg" width="90%" height="90%"></iframe>')
+      $("#flowchartflex").html('<iframe src="Story/Scenarios/M1Flow.svg" width="90%" height="90%"></iframe>');
     }
     if (x == 2) {
-      $("#flowchartflex").html('<iframe src="Story/Scenarios/M2Flow.svg" width="90%" height="90%"></iframe>')
+      $("#flowchartflex").html('<iframe src="Story/Scenarios/M2Flow.svg" width="90%" height="90%"></iframe>');
     }
     if (x == 3) {
-      $("#flowchartflex").html('<iframe src="Story/Scenarios/M3Flow.svg" width="90%" height="90%"></iframe>')
+      $("#flowchartflex").html('<iframe src="Story/Scenarios/M3Flow.svg" width="90%" height="90%"></iframe>');
     }
     if (x == 4) {
-      $("#flowchartflex").html('<iframe src="Story/Scenarios/M4Flow.svg" width="90%" height="90%"></iframe>')
+      $("#flowchartflex").html('<iframe src="Story/Scenarios/M4Flow.svg" width="90%" height="90%"></iframe>');
     }
     if (x == 5) {
-      $("#flowchartflex").html('<iframe src="Story/Scenarios/M5Flow.svg" width="90%" height="90%"></iframe>')
+      $("#flowchartflex").html('<iframe src="Story/Scenarios/M5Flow.svg" width="90%" height="90%"></iframe>');
     }
     if (x == 6) {
-      $("#flowchartflex").html('<iframe src="Story/Scenarios/M6Flow.svg" width="90%" height="90%"></iframe>')
+      $("#flowchartflex").html('<iframe src="Story/Scenarios/M6Flow.svg" width="90%" height="90%"></iframe>');
     }
     $('#flowchartflex').css("transform", `scale(${z})`);
   }
@@ -225,13 +225,13 @@ function flowchart(x, y, s) {
 }
 
 function showvid() {
-  $("#videocard, #close").removeClass("hidden");
-  $("#videoflex").html('<video id="silentmov" style="border-radius: 16px" controls><source src="resources/Golly!.webm" type="video/webm">Your browser does not support the video tag.</video>')
+  $("#videocard, .close").removeClass("hidden");
+  $("#videoflex").html('<video id="silentmov" style="border-radius: 16px" controls><source src="resources/Golly!.webm" type="video/webm">Your browser does not support the video tag.</video>');
 }
 
 function clue(x, y) {
-  $("#hintcard, #close").removeClass("hidden");
-  $("#hinttext").html(`To unlock Flowchart Nr. ${x} find an easter egg.<br>Hint: ${y}`)
+  $("#hintcard, .close").removeClass("hidden");
+  $("#hinttext").html(`To unlock Flowchart Nr. ${x} find an easter egg.<br>Hint: ${y}`);
 }
 
 function closemenu() {
@@ -243,28 +243,28 @@ function closemenu() {
 function right() {
   if(iframey < (40*z*mobile)) {
     iframey += 40;
-    $("#flowchartflex").css("transform", `translate(${iframey}%, ${iframex}%) scale(${z})`)
+    $("#flowchartflex").css("transform", `translate(${iframey}%, ${iframex}%) scale(${z})`);
   }
 }
 
 function left() {
   if(iframey > -(40*z*mobile)) {
     iframey -= 40;
-    $("#flowchartflex").css("transform", `translate(${iframey}%, ${iframex}%) scale(${z})`)
+    $("#flowchartflex").css("transform", `translate(${iframey}%, ${iframex}%) scale(${z})`);
   }
 }
 
 function up() {
   if(iframex < (40*z*mobile)) {
     iframex += 20;
-    $("#flowchartflex").css("transform", `translate(${iframey}%, ${iframex}%) scale(${z})`)
+    $("#flowchartflex").css("transform", `translate(${iframey}%, ${iframex}%) scale(${z})`);
   }
 }
 
 function down() {
   if(iframex > -(40*z*mobile)) {
     iframex -= 20;
-    $("#flowchartflex").css("transform", `translate(${iframey}%, ${iframex}%) scale(${z})`)
+    $("#flowchartflex").css("transform", `translate(${iframey}%, ${iframex}%) scale(${z})`);
   }
 }
 
@@ -291,7 +291,7 @@ function egg(x) {
     }
   }
   if (x == 2 && localStorage.getObj("M1-Endings").filter((x) => x == 1).length > 0) {
-    egg2++
+    egg2++;
     $(".me").addClass("shake");
     setTimeout(function(){$(".me").removeClass("shake")}, 200);
     if (egg2 == 3) {
@@ -302,7 +302,7 @@ function egg(x) {
     }
   }
   if (x == 3 && localStorage.getObj("M2-Endings").filter((x) => x == 1).length > 0) {
-    egg3++
+    egg3++;
     $(".version").addClass("shake");
     setTimeout(function(){$(".version").removeClass("shake")}, 200);
     if (egg3 == 3) {

@@ -328,7 +328,7 @@ nav {
 	transform: translateY(-100%);
 }
 
-#close {
+.close {
 	z-index: 101;
 	position: absolute;
 	margin: 16px;

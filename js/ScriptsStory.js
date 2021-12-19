@@ -5,7 +5,7 @@ var btnsfx4;
 var endCard;
 var theme;
 
-if (localStorage.getObj("sound") == "false") {
+if (localStorage.getObj("sound") == false) {
   $(".togglediv").addClass("hidden");
 } else {
   btnsfx1 = new Audio("../resources/btnsfx1.ogg");

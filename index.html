@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Main Menu</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content="Project Passage is a small text based adventure game made entirely in Html, Css and Javascript."/>
@@ -37,10 +38,10 @@
           <a class="switchesmain switcharcade" onclick="ArcadeSwitch()"><svg class="icon"><use xlink:href="#arcadeicon"/></svg><p style="margin: 0 0 10px 0">Arcade</p></a>
           <a class="switchesmain switchsurvival" onclick="SurvivalSwitch()"><svg class="icon"><use xlink:href="#survivalicon"/></svg><p style="margin: 0 0 10px 0">Survival</p></a>
         </div>
-        <p onclick="egg(3)" class="version">v2.0</p>
+        <p onclick="egg(3)" class="version">v2.1</p>
     </div>
     <div class="hidden" id="flowchartcard">
-      <svg class="icon" id="close" onclick="closemenu()"><use xlink:href="#closeicon"/></svg>
+      <svg class="icon close" onclick="closemenu()"><use xlink:href="#closeicon"/></svg>
       <svg class="icon up" onclick="up()"><use xlink:href="#play"/></svg>
       <svg class="icon down" onclick="down()"><use xlink:href="#play"/></svg>
       <svg class="icon right" onclick="right()"><use xlink:href="#play"/></svg>
@@ -48,11 +49,11 @@
       <div id="flowchartflex"></div>
     </div>
     <div class="hidden" id="videocard">
-      <svg class="icon" id="close" onclick="closemenu()"><use xlink:href="#closeicon"/></svg>
+      <svg class="icon close" onclick="closemenu()"><use xlink:href="#closeicon"/></svg>
       <div id="videoflex"></div>
     </div>
     <div class="hidden" id="hintcard">
-      <svg class="icon" id="close" onclick="closemenu()"><use xlink:href="#closeicon"/></svg>
+      <svg class="icon close" onclick="closemenu()"><use xlink:href="#closeicon"/></svg>
       <div id="hintflex">
         <svg class="icon" style="width: 160px; height: 160px"><use xlink:href="#hint"/></svg>
         <p id="hinttext"></p>
